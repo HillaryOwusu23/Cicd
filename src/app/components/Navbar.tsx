@@ -3,9 +3,9 @@ import { FiShoppingBag } from 'react-icons/fi';
 import Link from 'next/link';
 export const Navbar = () => {
   return (
-    <div className="w-full flex justify-between items-center shadow-lg h-[5rem] spacing  py-2">
+    <div className="w-full bg-[#ededed] flex fixed z-20 justify-between items-center shadow-lg h-[5rem] spacing  py-2">
       <Link
-        href="/"
+        href="/home"
         className="h-full flex font-urbanist text-2xl items-center text-neutral-900 font-bold"
       >
         Shop
