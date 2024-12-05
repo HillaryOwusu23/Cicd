@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src/**",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --check src --ext ts,tsx,js,jsx",
     "format:fix": "prettier --write src --ext ts,tsx,js,jsx",
     "prepare": "husky install"

@@ -1,4 +1,3 @@
-import globals from 'globals';
 import prettierConfig from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
 import js from '@eslint/js';
@@ -10,13 +9,12 @@ export default [
   {
     files: ['src/**/*.{ts,tsx}'],
     languageOptions: {
-      globals: {
-        ...globals.node,
-      },
       parserOptions: {
-        allowAutomaticSingleRunInference: true,
-        project: ['./*/tsconfig.json'],
-        tsconfigRootDir: import.meta.dirname,
+        ecmaVersion: 'latest', // Use the latest ECMAScript version
+        sourceType: 'module',
+      },
+      globals: {
+        window: 'readonly', // Example global variable
       },
     },
 

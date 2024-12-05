@@ -5,7 +5,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
   return (
     <div className="flex h-screen justify-center items-center">
-      {slug[0]}
+      {slug}
       <Cart />
     </div>
   );
