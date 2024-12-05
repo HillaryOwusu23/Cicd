@@ -12,6 +12,6 @@ export const productType = cache(async () => {
 
 const builder = imageUrlBuilder(sanityClient);
 
-export function urlForImage(source) {
+export function urlForImage(source: any) {
   return builder.image(source);
 }
