@@ -1,36 +1,48 @@
 {
-  "name": "cicd",
+  "name": "e-commerce",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "extract": "npx sanity schema extract && npx sanity typegen generate",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src --ext ts,tsx,js,jsx",
-    "format": "prettier --check src --ext ts,tsx,js,jsx",
-    "format:fix": "prettier --write src --ext ts,tsx,js,jsx",
+    "lint": "eslint src/**",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check src ",
+    "format:fix": "prettier --write src ",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@sanity/vision": "^3.64.3",
+    "motion": "^11.11.17",
     "next": "15.0.1",
+    "next-sanity": "^9.8.16",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.3.0",
+    "sanity": "^3.64.3",
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
+    "@sanity/image-url": "^1.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "15.0.1",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-js": "github:eslint/js",
     "eslint-plugin-prettier": "^5.2.1",
-    "framer-motion": "^12.0.0-alpha.0",
+    "framer-motion": "^11.11.17",
     "husky": "^8.0.0",
     "lint-staged": "^15.2.10",
     "postcss": "^8",
     "prettier": "^3.3.3",
+    "react-loader-spinner": "^6.1.6",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^8.16.0"
   },
   "husky": {
     "hooks": {
