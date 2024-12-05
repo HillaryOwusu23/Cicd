@@ -1,13 +1,12 @@
 import prettierConfig from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
-import js from '@eslint/js';
 
 export default [
-  js.configs.recommended,
   ...tseslint.configs.recommended,
   prettierConfig,
   {
-    files: ['src/**/*.{ts,tsx}'],
+    // files: ['/src/**/*.{ts,tsx}'],
+
     languageOptions: {
       parserOptions: {
         ecmaVersion: 'latest', // Use the latest ECMAScript version
@@ -18,10 +17,12 @@ export default [
       },
     },
 
+    ignores: ['.config/*', 'next.config.ts', ' /src/sanity/**'],
     rules: {
       'newline-before-return': 'error',
       'spaced-comment': ['error', 'always', { markers: ['/'] }],
       'no-irregular-whitespace': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       'padded-blocks': [
         'error',
         {

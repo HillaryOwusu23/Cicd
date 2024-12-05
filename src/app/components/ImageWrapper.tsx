@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import { Product } from '../../../sanity.types';
 import Image from 'next/image';
 import { urlForImage } from '../utils';
-import { SanityImage } from '../../../sanity.types';
+
 const ImageWrapper = ({ productDetail }: { productDetail: Product }) => {
   // Set initial state for the main image URL
   const [mainImage, setMainImage] = useState<string>(
     urlForImage(productDetail?.images && productDetail?.images[0])?.url()
   );
 
-  const updateImageUrl = (url: SanityImage) => {
+  const updateImageUrl = (url: any) => {
     setMainImage(urlForImage(url).url()); // Update the main image URL
   };
 
