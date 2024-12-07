@@ -6,6 +6,7 @@ import { Items } from './CartContext';
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [numberOfItems, setNumberOfItems] = useState<Items[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [modal, setModal] = useState<boolean>(false);
 
   useEffect(() => {
     const newTotal = numberOfItems.reduce(
@@ -40,6 +41,8 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         setNumberOfItems,
         numberOfItems,
+        modal,
+        setModal,
         handleRemoveItem,
         handlePriceReduction,
         handlePriceIncrease,

@@ -1,15 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import { productType, urlForImage } from '../utils';
+import { urlForImage } from '../utils';
 import { Product as ProductType } from '../../../sanity.types';
 import Link from 'next/link';
 
-export const ProductCard = async (): Promise<React.ReactElement> => {
-  const products = await productType();
-
+export const ProductCard = ({ products }: { products: ProductType[] }) => {
   return (
     <>
-      {products.map((item: ProductType) => {
+      {products?.map((item: ProductType) => {
         return (
           <Link
             key={item._id}

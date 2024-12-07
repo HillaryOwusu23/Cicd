@@ -1,24 +1,22 @@
 'use client';
 import { AiOutlineLeft } from 'react-icons/ai';
 import React, { useContext } from 'react';
-import { useRouter } from 'next/navigation';
-
 import CartItemWrapper from './CartItemWrapper';
 import { CartContext } from '../utils/CartContext';
 import { Items } from '../utils/CartContext';
 export const Cart = () => {
-  const router = useRouter();
-  const { numberOfItems, totalPrice } = useContext(CartContext);
+  const { numberOfItems, totalPrice, setModal } = useContext(CartContext);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg lg:w-5/12  max-w-md">
       <h2
         onClick={() => {
-          router.back();
+          setModal(false);
         }}
         className="text-md font-bold flex items-center  mb-4"
       >
-        <AiOutlineLeft className="text-xs" /> <p className="ml-2">Your Cart</p>
+        <AiOutlineLeft className="text-xs cursor-pointer " />{' '}
+        <p className="ml-2">Your Cart</p>
       </h2>
       <div className="w-full ">
         {numberOfItems?.map((item: Items) => {

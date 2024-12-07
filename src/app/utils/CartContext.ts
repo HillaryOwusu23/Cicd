@@ -6,9 +6,10 @@ export interface Items extends Product {
 }
 export const CartContext = createContext<{
   numberOfItems: Items[];
-
+  modal: boolean;
   setNumberOfItems: React.Dispatch<React.SetStateAction<Items[]>>;
   setTotalPrice: React.Dispatch<React.SetStateAction<number>>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
   handleRemoveItem: (id: string) => void;
   totalPrice: number;
   handlePriceReduction: (id: string) => void;
@@ -17,7 +18,9 @@ export const CartContext = createContext<{
   numberOfItems: [],
   setNumberOfItems: () => {},
   handleRemoveItem: () => {},
+  setModal: () => {},
   totalPrice: 0,
+  modal: false,
   handlePriceReduction: () => {},
   handlePriceIncrease: () => {},
   setTotalPrice: () => {},
