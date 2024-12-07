@@ -4,15 +4,21 @@ import React, { useState } from 'react';
 import { Product } from '../../../sanity.types';
 import Image from 'next/image';
 import { urlForImage } from '../utils';
+import { useContext } from 'react';
+import { CartContext } from '../utils/CartContext';
 
 const ImageWrapper = ({ productDetail }: { productDetail: Product }) => {
-  // Set initial state for the main image URL
+  const { setNumberOfItems, numberOfItems } = useContext(CartContext);
+  const [Items, setItems] = useState<number>(1);
   const [mainImage, setMainImage] = useState<string>(
     urlForImage(productDetail?.images && productDetail?.images[0])?.url()
   );
 
   const updateImageUrl = (url: any) => {
     setMainImage(urlForImage(url).url()); // Update the main image URL
+  };
+  const findDuplicate = (array: any, id: string) => {
+    return array.some((item: any) => item._id === id);
   };
 
   return (
@@ -65,11 +71,34 @@ const ImageWrapper = ({ productDetail }: { productDetail: Product }) => {
             </div>
             <div className="w-full flex flex-col justify-around lg:p-2 px-2 h-[50%]">
               <div className="w-[50%] flex font-semibold justify-between border-2 lg:p-3 p-2 border-black border-spacing-3">
-                <p>+</p>
-                <p>1</p>
-                <p>-</p>
+                <button
+                  onClick={() => {
+                    setItems((prevCount) => prevCount + 1);
+                  }}
+                >
+                  +
+                </button>
+                <p>{Items}</p>
+                <button
+                  disabled={Items === 1}
+                  onClick={() => setItems((prevCount) => prevCount - 1)}
+                >
+                  -
+                </button>
               </div>
-              <button className="w-[50%] border-2 font-semibold lg:p-3 p-2 border-black">
+              <button
+                onClick={() => {
+                  const check = findDuplicate(numberOfItems, productDetail._id);
+
+                  if (!check) {
+                    setNumberOfItems((prev) => [
+                      ...prev,
+                      { ...productDetail, quantity: Items },
+                    ]);
+                  }
+                }}
+                className="w-[50%] border-2 font-semibold lg:p-3 p-2 border-black"
+              >
                 Add To Cart
               </button>
             </div>
