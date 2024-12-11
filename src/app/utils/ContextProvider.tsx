@@ -7,7 +7,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [numberOfItems, setNumberOfItems] = useState<Items[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [modal, setModal] = useState<boolean>(false);
-
+  const [chat, setChat] = useState<boolean>(false);
   useEffect(() => {
     const newTotal = numberOfItems.reduce(
       (sum, item) => sum + (item.quantity || 0) * (item.price || 0),
@@ -48,6 +48,8 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
         handlePriceIncrease,
         totalPrice,
         setTotalPrice,
+        chat,
+        setChat,
       }}
     >
       {children}

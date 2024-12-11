@@ -17,7 +17,7 @@ export default [
       },
     },
 
-    ignores: ['.config/*', 'next.config.ts', ' /src/sanity/**'],
+    ignores: ['.config/*', 'next.config.ts', ' /src/sanity/**','api/**/*'],
     rules: {
       'newline-before-return': 'error',
       'spaced-comment': ['error', 'always', { markers: ['/'] }],
@@ -37,7 +37,7 @@ export default [
           max: 1,
         },
       ],
-      'no-console': 'error',
+      'no-console': 'warn',
       quotes: ['error', 'single', { avoidEscape: true }],
     },
   },

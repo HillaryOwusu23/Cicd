@@ -4,7 +4,10 @@ import React, { useContext } from 'react';
 import CartItemWrapper from './CartItemWrapper';
 import { CartContext } from '../utils/CartContext';
 import { Items } from '../utils/CartContext';
+import { useRouter } from 'next/navigation';
+
 export const Cart = () => {
+  const router = useRouter();
   const { numberOfItems, totalPrice, setModal } = useContext(CartContext);
 
   return (
@@ -31,7 +34,13 @@ export const Cart = () => {
         <p>Subtotal</p>
         <p>${totalPrice}</p>
       </div>
-      <button className="px-4 py-2  border-2 border-black rounded w-full text-black hover:bg-neutral-100">
+      <button
+        onClick={() => {
+          setModal(false);
+          router.push('/home/cart');
+        }}
+        className="px-4 py-2  border-2 border-black rounded w-full text-black hover:bg-neutral-100"
+      >
         Pay with stripe
       </button>
     </div>

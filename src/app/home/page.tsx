@@ -3,7 +3,7 @@ import { Hero } from '../components/Hero';
 import { Product } from '../components/Product';
 import { productType } from '../utils';
 
-const HomePage = async (): Promise<React.ReactNode> => {
+const HomePage = async (): Promise<React.ReactElement> => {
   const products = await productType();
 
   return (

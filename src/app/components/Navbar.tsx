@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
 import Link from 'next/link';
 import { CartContext } from '../utils/CartContext';
+import { logOutHandler } from '@/actions/login.action';
 
 export const Navbar = () => {
   const { numberOfItems, setModal } = useContext(CartContext);
@@ -27,6 +28,7 @@ export const Navbar = () => {
           {numberOfItems.length}
         </span>
       </button>
+      <button onClick={logOutHandler}>Logout</button>
     </div>
   );
 };

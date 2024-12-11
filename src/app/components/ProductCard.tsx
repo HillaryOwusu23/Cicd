@@ -25,7 +25,7 @@ export const ProductCard = ({ products }: { products: ProductType[] }) => {
             </div>
             <div className="w-full flex flex-col  items-center justify-center  h-[17%]">
               <h4 className="font-semibold text-black">{item.product}</h4>
-              <p>{item.price}</p>
+              <p>${item.price}</p>
             </div>
           </Link>
         );

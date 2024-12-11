@@ -9,8 +9,8 @@ export const Product = ({
   products: ProductType[];
 }): React.ReactElement => {
   return (
-    <div className="w-full lg:h-[30rem] bg-[#DCDCDC]">
-      <div className="w-full lg:h-[20%] h-[6rem] flex-col flex justify-center  spacing">
+    <div className="w-full py-8 bg-[#DCDCDC]">
+      <div className="w-full lg:h-[4rem] h-[4rem] flex-col flex justify-center  spacing">
         <p className="font-bold  text-[20px]"> Best Selling Products</p>
         <p className=" text-[13px]">Up to 50% percent off</p>
       </div>
