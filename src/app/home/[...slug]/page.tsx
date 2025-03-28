@@ -5,6 +5,7 @@ import ChatComponent from '@/app/components/chat';
 import { ToggleChart } from '@/app/components/ToggleChart';
 import { decrypt } from '@/app/lib/session';
 import { cookies } from 'next/headers';
+import { auth } from '../../../auth';
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const products = await productType();
@@ -13,6 +14,9 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const jwtToken = cookie.get('session')?.value;
 
   const session = await decrypt(jwtToken);
+  const session1 = await auth();
+
+  console.log(session1, session);
 
   const productDetail = products.find(
     (item: ProductType) => item?.slug?.current === slug[0]

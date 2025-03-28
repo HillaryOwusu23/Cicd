@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import ContextProvider from './utils/ContextProvider';
+import { SessionProvider } from 'next-auth/react';
+import { Session } from 'next-auth';
+import { Navbar } from './components/Navbar';
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
@@ -20,18 +23,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  session,
 }: Readonly<{
   children: React.ReactNode;
+  session?:  Session | null;
 }>) {
   return (
     <html lang="en">
-      <ContextProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </body>
-      </ContextProvider>
+      <SessionProvider session={session}>
+        <ContextProvider>
+        
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          ><Navbar />
+            {children}
+          </body>
+        </ContextProvider>
+      </SessionProvider>
     </html>
   );
 }

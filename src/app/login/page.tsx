@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoginPage } from '../components/Login';
 import Image from 'next/image';
+
 const Page = () => {
   return (
     <div className="relative">
@@ -8,9 +9,8 @@ const Page = () => {
         <Image
           src="/robot.jpg" // Replace with the path to your image
           alt="Futuristic Robot"
-          layout="fill"
-          objectFit="cover"
-          className=""
+          fill
+          className="object-contain"
         />
       </div>
       <LoginPage />;

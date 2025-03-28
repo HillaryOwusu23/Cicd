@@ -1,16 +1,15 @@
 'use client';
 
-import { loginHandler } from '@/actions/login.action';
 import { useActionState, useState } from 'react';
 import { FaRegEyeSlash } from 'react-icons/fa6';
 import { IoEyeOutline } from 'react-icons/io5';
 import { useFormStatus } from 'react-dom';
+import { loginHandler } from '@/actions/login.action';
 
 export function LoginPage() {
-  const [state, action] = useActionState(loginHandler, undefined);
-
   const [togglePassword, setTogglePassword] = useState(false);
   const { pending } = useFormStatus();
+  const [state, formAction] = useActionState(loginHandler, undefined);
   const handleTogglePassword = () => {
     setTogglePassword((prev) => !prev);
   };
@@ -23,10 +22,10 @@ export function LoginPage() {
           <h1 className="text-4xl font-bold mb-6 text-center">
             Hello! Welcome Back
           </h1>
-          <form action={action} className="space-y-4">
+          <form action={formAction} className="space-y-4">
             {/* Email Input */}
             <div>
-              {state?.error.email && (
+              {state?.error?.email && (
                 <p className="text-red-500">{state?.error?.email}</p>
               )}
               <label htmlFor="email" className="block text-sm font-medium mb-1">
@@ -78,6 +77,10 @@ export function LoginPage() {
               <div className="flex justify-center space-x-4"></div>
             </div>
           </form>
+          {/* <div className="flex justify-between">
+            <SignIn provider="google" handler={googleSignIn} />
+            <SignIn provider="github" handler={gitHubSignIn} />
+          </div> */}
 
           <p className="text-sm text-center mt-4">
             Don’t have an account?{' '}

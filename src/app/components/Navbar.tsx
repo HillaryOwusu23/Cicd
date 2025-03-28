@@ -1,22 +1,30 @@
 'use client';
-
 import React, { useContext } from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
 import Link from 'next/link';
 import { CartContext } from '../utils/CartContext';
-import { logOutHandler } from '@/actions/login.action';
+import { googleSignOut } from '@/actions/message.action';
 
 export const Navbar = () => {
   const { numberOfItems, setModal } = useContext(CartContext);
 
   return (
     <div className="w-full bg-[#ededed] flex fixed z-20 justify-between items-center shadow-lg h-[5rem] spacing  py-2">
-      <Link
-        href="/home"
-        className="h-full flex font-urbanist text-2xl items-center text-neutral-900 font-bold"
-      >
-        Shop
-      </Link>
+      <div className="w-[80%] flex h-full">
+        <Link
+          href="/home"
+          className="h-full w-[20%] flex font-urbanist text-2xl items-center text-neutral-900 font-bold"
+        >
+          Shop
+        </Link>
+        <Link
+          href="/dashboard"
+          className="h-full p-3 flex font-urbanist  items-center text-neutral-900 font-semibold"
+        >
+          Dashboard
+        </Link>
+      </div>
+      <div className="w-[10%] flex items-center justify-between h-full">
       <button
         onClick={() => {
           setModal(true);
@@ -28,7 +36,15 @@ export const Navbar = () => {
           {numberOfItems.length}
         </span>
       </button>
-      <button onClick={logOutHandler}>Logout</button>
+
+      <button
+        onClick={() => {
+          googleSignOut();
+        }}
+      >
+        Logout
+      </button>
+      </div>
     </div>
   );
 };

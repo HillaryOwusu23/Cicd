@@ -1,10 +1,10 @@
 'use client';
 import React from 'react';
-import { Navbar } from '../components/Navbar';
 import { useContext } from 'react';
 import { CartContext } from '../utils/CartContext';
 import Modal from '../components/Modal';
 import { Cart } from '../components/Cart';
+
 export default function HomeLayout({
   children,
 }: {
@@ -15,7 +15,6 @@ export default function HomeLayout({
 
   return (
     <div>
-      <Navbar />
       {modal && (
         <Modal>
           <Cart />
