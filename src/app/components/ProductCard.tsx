@@ -1,15 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import { productType, urlForImage } from '../utils';
+import { urlForImage } from '../utils';
 import { Product as ProductType } from '../../../sanity.types';
 import Link from 'next/link';
 
-export const ProductCard = async (): Promise<React.ReactElement> => {
-  const products = await productType();
-
+export const ProductCard = ({ products }: { products: ProductType[] }) => {
   return (
     <>
-      {products.map((item: ProductType) => {
+      {products?.map((item: ProductType) => {
         return (
           <Link
             key={item._id}
@@ -27,7 +25,7 @@ export const ProductCard = async (): Promise<React.ReactElement> => {
             </div>
             <div className="w-full flex flex-col  items-center justify-center  h-[17%]">
               <h4 className="font-semibold text-black">{item.product}</h4>
-              <p>{item.price}</p>
+              <p>${item.price}</p>
             </div>
           </Link>
         );

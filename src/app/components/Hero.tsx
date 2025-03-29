@@ -21,7 +21,13 @@ export const Hero = () => {
         transition={{ duration: 0.5, delay: 1 }}
         className="absolute lg:top-[27.5rem] md:top-[23rem] sm:top-[10rem] top-[16.5rem]"
       >
-        <Image src={'/Pods.png'} alt="banner" width={700} height={100} />
+        <Image
+          src={'/Pods.png'}
+          alt="banner"
+          priority
+          width={700}
+          height={100}
+        />
       </motion.div>
     </div>
   );
