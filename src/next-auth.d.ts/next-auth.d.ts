@@ -1,4 +1,4 @@
-import  'next-auth';
+import 'next-auth';
 import 'next-auth/jwt';
 
 declare module 'next-auth' {
@@ -8,7 +8,7 @@ declare module 'next-auth' {
    */
   interface User {
     id: string;
-    role:string
+    role: string;
   }
   /**
    * The shape of the account object returned in the OAuth providers' `account` callback,
@@ -19,7 +19,7 @@ declare module 'next-auth' {
    * Returned by `useSession`, `auth`, contains information about the active session.
    */
   interface Session {
-    user: User ;
+    user: User;
   }
 }
 

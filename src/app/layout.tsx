@@ -26,16 +26,16 @@ export default function RootLayout({
   session,
 }: Readonly<{
   children: React.ReactNode;
-  session?:  Session | null;
+  session?: Session | null;
 }>) {
   return (
     <html lang="en">
       <SessionProvider session={session}>
         <ContextProvider>
-        
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          ><Navbar />
+          >
+            <Navbar />
             {children}
           </body>
         </ContextProvider>

@@ -70,8 +70,10 @@ const ChatComponent = ({ id }: { id: string }) => {
               scrollbarWidth: 'none', // For Firefox
             }}
           >
-            {userMessage.length === 0  ? (
-              <div className="text-center bg-red-900 text-gray-800">No messages yet</div>
+            {userMessage.length === 0 ? (
+              <div className="text-center bg-red-900 text-gray-800">
+                No messages yet
+              </div>
             ) : (
               userMessage?.map((item, index) => (
                 <div

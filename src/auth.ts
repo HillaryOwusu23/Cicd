@@ -2,10 +2,6 @@ import NextAuth from 'next-auth';
 import Google from 'next-auth/providers/google';
 import GitHub from 'next-auth/providers/github';
 import Credentials from 'next-auth/providers/credentials';
-import { ZodError } from 'zod';
-import { signInSchema } from './app/utils/lib/zod';
-import { testUser, User } from './app/utils/lib/users';
-import { Awaitable } from "next-auth";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google({
@@ -22,30 +18,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
 
-      authorize: async (
-        credentials: Partial<Record<'email' | 'password', unknown>>
-        , request: Request ): Awaitable<User | null> => {
-        try {
-          let user = null;
+      // authorize: async (
+      //   credentials
+      //   , request ): Awaitable<User | null> => {
+      //   try {
+      //     let user = null;
 
-          const { email } = await signInSchema.parseAsync(credentials);
+      //     const { email } = await signInSchema.parseAsync(credentials);
 
-          // logic to verify if the user exists
-          user = testUser.find((person) => person.email === email);
+      //     // logic to verify if the user exists
+      //     user = testUser.find((person) => person.email === email);
 
-          if (!user) {
-            throw new Error('Invalid credentials');
-          }
-          // return JSON object with the user data
+      //     if (!user) {
+      //       throw new Error('Invalid credentials');
+      //     }
+      //     // return JSON object with the user data
 
-          return user;
-        } catch (error) {
-          if (error instanceof ZodError) {
-            throw new Error('Invalid input format.');
-          }
-          throw error;
-        }
-      },
+      //     return user;
+      //   } catch (error) {
+      //     if (error instanceof ZodError) {
+      //       throw new Error('Invalid input format.');
+      //     }
+      //     throw error;
+      //   }
+      // },
     }),
   ],
 
@@ -69,7 +65,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   //   },
   //   authorized: async ({ request: { nextUrl }, auth }) => {
   //     console.log(auth);
-      
+
   //     const role = auth?.user.role || 'user';
   //     const { pathname } = nextUrl;
   //     if (pathname.startsWith('/dashboard') && role !== 'admin') {

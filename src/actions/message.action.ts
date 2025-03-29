@@ -2,7 +2,6 @@
 
 import { signIn, signOut } from '@/auth';
 import { pusherServer } from '@/app/utils/pusher';
-import { redirect } from 'next/navigation';
 
 interface chatType {
   message: string;
@@ -29,4 +28,3 @@ export const gitHubSignIn = async () => {
 export const googleSignOut = async () => {
   await signOut();
 };
-

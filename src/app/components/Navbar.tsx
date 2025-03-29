@@ -25,25 +25,25 @@ export const Navbar = () => {
         </Link>
       </div>
       <div className="w-[10%] flex items-center justify-between h-full">
-      <button
-        onClick={() => {
-          setModal(true);
-        }}
-        className="relative  text-[1.5rem]"
-      >
-        <FiShoppingBag />
-        <span className="absolute font-urbanist  flex justify-center items-center px-[6px] py-[1px] bottom-[9px] left-3 text-yellow-50 text-[11px] jus rounded-full bg-red-600">
-          {numberOfItems.length}
-        </span>
-      </button>
+        <button
+          onClick={() => {
+            setModal(true);
+          }}
+          className="relative  text-[1.5rem]"
+        >
+          <FiShoppingBag />
+          <span className="absolute font-urbanist  flex justify-center items-center px-[6px] py-[1px] bottom-[9px] left-3 text-yellow-50 text-[11px] jus rounded-full bg-red-600">
+            {numberOfItems.length}
+          </span>
+        </button>
 
-      <button
-        onClick={() => {
-          googleSignOut();
-        }}
-      >
-        Logout
-      </button>
+        <button
+          onClick={() => {
+            googleSignOut();
+          }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
