@@ -1,26 +1,34 @@
 import { urlForImage } from '../utils';
-import { LoginForm } from '@/components/login-form';
 import Image from 'next/image';
 import { sanityFetch } from '@/sanity/lib/live';
 import { loginQuery } from '../utils';
+import { SignUpForm } from '@/components/sign-up-form';
+
 export default async function LoginPage(): Promise<React.ReactElement> {
-  const { data } = await sanityFetch({
-    query: loginQuery,
-  });
+  let data = [];
+  try {
+    const { data: hey } = await sanityFetch({
+      query: loginQuery,
+    });
+
+    data = hey;
+  } catch (error) {
+    console.error(error);
+  }
 
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm />
+            <SignUpForm />
           </div>
         </div>
       </div>
       <div className="relative inset hidden bg-muted lg:block">
         <Image
           src={urlForImage(
-            data?.[0]?.loginImage && data?.[0]?.loginImage
+            data?.[0]?.signupImage && data?.[0]?.signupImage
           ).url()}
           alt="productImage"
           fill

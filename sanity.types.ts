@@ -67,20 +67,25 @@ export type Geopoint = {
   lng?: number;
   alt?: number;
 };
-export type SanityImage =
-  | {
-      asset?: {
-        _ref: string;
-        _type: 'reference';
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: 'image';
-      _key: string;
-    }[]
-  | undefined;
+
+export type Login = {
+  _id: string;
+  _type: 'login';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+};
 
 export type Product = {
   _id: string;
@@ -176,6 +181,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Login
   | Product
   | SanityImageCrop
   | SanityImageHotspot

@@ -11,7 +11,7 @@ interface messageType {
   message: string;
   id: string;
 }
-const ChatComponent = ({ id }: { id: string }) => {
+const ChatComponent = ({ id }: { id?: string }) => {
   const [userMessage, setMessage] = useState<messageType[]>([
     {
       message: '',

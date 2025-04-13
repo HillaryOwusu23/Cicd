@@ -1,26 +1,32 @@
-'use server';
-import { signInSchema } from '@/app/utils/lib/zod';
-import { signIn } from '@/auth';
+import { loginSchema } from '@/lib/zod';
+interface ILoginState {
+  email: string | null;
+  password: string | null;
+  message: string;
+  success: boolean;
+}
+export const loginAction = async (
+  _prevState: ILoginState,
+  formData: FormData
+) => {
+  const email = formData.get('email') as string | null;
+  const password = formData.get('password') as string | null;
 
-export const loginHandler = async (prevState: any, formData: FormData) => {
-  const { data, success, error } = signInSchema.safeParse(
-    Object.fromEntries(formData)
-  );
+  const data = loginSchema.safeParse({ email, password });
 
-  if (!success) {
+  if (data.success) {
     return {
-      error: error.flatten().fieldErrors,
+      email,
+      password,
+      message: 'Signed in successfully',
+      success: true,
     };
-  }
-
-  const res = await signIn('credentials', {
-    redirect: false,
-    callbackUrl: '/home',
-    email: data.email,
-    password: data.password,
-  });
-
-  if (!res || !res.ok) {
-    console.log('Sign-in failed:', res);
+  } else {
+    return {
+      email: data.error.issues[1]?.message || '',
+      password: data.error.issues[0]?.message || '',
+      message: 'Sign-in unsuccessful',
+      success: false,
+    };
   }
 };

@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
 import Link from 'next/link';
 import { CartContext } from '../utils/CartContext';
-import { googleSignOut } from '@/actions/message.action';
 
 export const Navbar = () => {
   const { numberOfItems, setModal } = useContext(CartContext);
@@ -37,13 +36,7 @@ export const Navbar = () => {
           </span>
         </button>
 
-        <button
-          onClick={() => {
-            googleSignOut();
-          }}
-        >
-          Logout
-        </button>
+        <button>Logout</button>
       </div>
     </div>
   );
