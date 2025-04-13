@@ -8,7 +8,7 @@ import { signUpAction } from '@/actions/signup.action';
 export function SignUpForm({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<'form'>) {
+}: Readonly<React.ComponentPropsWithoutRef<'form'>>) {
   const [newState, formAction, pending] = useActionState(signUpAction, {});
   const [type, setType] = useState(true);
   const [passwordType, setPasswordType] = useState(true);
@@ -65,14 +65,14 @@ export function SignUpForm({
               type={passwordType ? 'password' : 'text'}
               required
             />
-            <div
+            <button
               onClick={() => {
                 setPasswordType((prev) => !prev);
               }}
               className="cursor-pointer w-[12%] h-full"
             >
               {passwordType ? 'hide' : 'show'}
-            </div>
+            </button>
           </div>
           {newState.password && newState.success === false && (
             <p className="text-sm text-red-500">{newState.password}</p>
@@ -90,14 +90,14 @@ export function SignUpForm({
               type={type ? 'password' : 'text'}
               required
             />
-            <div
+            <button
               onClick={() => {
                 setType((prev) => !prev);
               }}
               className="cursor-pointer w-[12%] h-full"
             >
               {type ? 'hide' : 'show'}
-            </div>
+            </button>
           </div>
           {newState.confirmPassword && newState.success === false && (
             <p className="text-sm text-red-500">{newState.confirmPassword}</p>

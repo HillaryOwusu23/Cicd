@@ -10,7 +10,7 @@ import { loginAction } from '@/actions/login.action';
 export function LoginForm({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<'form'>) {
+}: Readonly<React.ComponentPropsWithoutRef<'form'>>) {
   const init = {
     email: '',
     password: '',

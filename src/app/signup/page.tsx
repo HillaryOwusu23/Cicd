@@ -1,7 +1,6 @@
-import { urlForImage } from '../utils';
+import { urlForImage, loginQuery } from '../utils';
 import Image from 'next/image';
 import { sanityFetch } from '@/sanity/lib/live';
-import { loginQuery } from '../utils';
 import { SignUpForm } from '@/components/sign-up-form';
 
 export default async function LoginPage(): Promise<React.ReactElement> {
@@ -28,7 +27,7 @@ export default async function LoginPage(): Promise<React.ReactElement> {
       <div className="relative inset hidden bg-muted lg:block">
         <Image
           src={urlForImage(
-            data?.[0]?.signupImage && data?.[0]?.signupImage
+            data?.[0]?.signupImage && data?.[0].signupImage
           ).url()}
           alt="productImage"
           fill

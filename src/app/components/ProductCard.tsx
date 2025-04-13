@@ -16,7 +16,7 @@ export const ProductCard = ({ products }: { products: ProductType[] }) => {
           >
             <div className="w-full items-center  flex justify-center h-[75%]     ">
               <Image
-                src={urlForImage(item.images && item.images[0]).url()}
+                src={urlForImage(item.images ? item.images[0] : '').url()}
                 alt="productImage"
                 width={150}
                 height={50}
